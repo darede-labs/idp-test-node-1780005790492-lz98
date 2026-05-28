@@ -1,0 +1,38 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-node-1780005790492-lz98
+  namespace: test-node-1780005790492-lz98
+  labels:
+    app: test-node-1780005790492-lz98
+    app.kubernetes.io/name: test-node-1780005790492-lz98
+  annotations:
+    # ALB Configuration - uses shared platform ALB
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/group.name: dev-platform
+    alb.ingress.kubernetes.io/group.order: "20"
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:948881762705:certificate/051f6515-0d0b-459c-a056-0663f7c88f5e
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+    alb.ingress.kubernetes.io/success-codes: "200"
+    # External DNS
+    external-dns.alpha.kubernetes.io/hostname: test-node-1780005790492-lz98.timedevops.click
+spec:
+  rules:
+    - host: test-node-1780005790492-lz98.timedevops.click
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: test-node-1780005790492-lz98
+                port:
+                  name: http
+
