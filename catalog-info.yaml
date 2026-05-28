@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: test-node-1780005790492-lz98
+  description: E2E test Node.js application created at 2026-05-28T22:03:25.196Z
+  annotations:
+    github.com/project-slug: darede-labs/idp-test-node-1780005790492-lz98
+    backstage.io/kubernetes-namespace: test-node-1780005790492-lz98
+    backstage.io/kubernetes-label-selector: app=test-node-1780005790492-lz98
+spec:
+  type: service
+  lifecycle: experimental
+  owner: 
