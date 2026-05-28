@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-node-1780005790492-lz98
+  namespace: test-node-1780005790492-lz98
+  labels:
+    app: test-node-1780005790492-lz98
+    app.kubernetes.io/name: test-node-1780005790492-lz98
+    app.kubernetes.io/component: application
+spec:
+  type: ClusterIP
+  selector:
+    app: test-node-1780005790492-lz98
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
